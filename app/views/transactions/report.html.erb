@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>  
+  <body>
+        <main>
+            <h1>Звіт за період: <%= @start_date%> / <%= @end_date %></h1>
+            <h2><%= @transaction_type%></h2>
+            <div class="main-container">
+                <div class="content-container" style="width: 500px; ">  
+                    <table>
+                        <thead>
+                            <tr>
+                            <th>Категорія</th>
+                            <th>Сума</th>                 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @transaction_grouped.each do |title, transaction| %>
+                                <tr>
+                                    <td><%= title %></td>
+                                    <td><%= transaction.sum(&:sum) %></td>
+                                </tr>
+                            <% end %>        
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td class="all_sum" colspan="2">Всього: <%= @all_sum %> грн.</td>
+                            </tr>                
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="graph">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            
+        </main>
+
+        <div id="data" data-titles="<%= @transaction_grouped.keys.join(',') %>" data-sums="<%= @transaction_grouped.values.map { |transactions| transactions.sum(&:sum) }.join(',') %>"></div>
+        
+        
+        <script>
+            var titlesArray = document.getElementById('data').dataset.titles.split(','); 
+            var sumsArray = document.getElementById('data').dataset.sums.split(',').map(Number);
+            var arr_title = ['a', 'b', 'c'] 
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'pie', // тип діаграми (кругова)
+                data: {
+                    labels: [...titlesArray], // назви категорій
+                    datasets: [{
+                        label: 'Ціна в грн',
+                        data: [...sumsArray], // суми витрат
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '<%= @title_giagram%>',
+                            padding: {
+                                top: 10,
+                                bottom: 30
+                            },
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+
+<h1 class="new_category">Редагування інформації про транзакції</h1>
+
+<%= form_for :transaction, url: transaction_path(@transaction), method: :patch, html: { class: "category-form" } do |f| %>
+
+    <div class="content-container"> 
+        <div class="title_category">
+            <p class="title">Назва категорії</p>
+            <%= f.collection_select :title, Category.all, :title, :title, { include_blank: 'Оберіть категорію' }, class: 'category-dropdown' %>
+        </div>
+
+        <div class="title_category">
+            <p class="title">Тип операції</p>
+            <%= f.select :transaction_type, [['Витрати', 'Витрати'], ['Дохід', 'Дохід']], { include_blank: "Оберіть тип операції" }, class: "transaction-type-dropdown" %>
+        </div>
+
+        <div class="title_category">
+            <p class="title">Сума</p>  
+            <%= f.text_field :sum, class: "amount-input" %>
+        </div>   
+
+        <div class="title_category">
+            <p class="title">Дата</p>
+            <%= f.date_field :date, class: "date-input" %>
+        </div> 
+
+        <div class="description_category">
+            <p class="description">Короткий опис</p>
+            <%= f.text_area :description, class: "description-input" %>
+        </div> 
+        
+        <p class="button_clear_t">
+            <%= f.submit "Зберегти", class: "category-submit" %>
+            <%= button_tag "Очистити", type: :reset, class: "category-submit" %>
+        </p>
+    </div>
+    
+<% end %>

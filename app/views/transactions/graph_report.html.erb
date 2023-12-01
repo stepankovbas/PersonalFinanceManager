@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chart.js Example</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <div style="width: 80%; margin-left: 200px;">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <div id="data_graph" data-dates="<%= @date_arr.map { |date| date.strftime("%Y-%m-%d") } %>" data-sums="<%= @sum_arr.join(',') %>"></div>
+        <script>
+            // Припустимі дані для витрат і доходів за період
+            
+            var incomeData = [200, 180, 250, 210, 300]; // Припустимий дохід/витрати за кожен місяць
+            var datesArray = document.getElementById('data_graph').dataset.dates.split(','); 
+            var sumsArray = document.getElementById('data_graph').dataset.sums.split(',');
+            console.log(datesArray);
+            console.log(sumsArray);
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line', // тип графіка (лінійний)
+                data: {
+                    labels: [...datesArray], // Припустимі місяці
+                    datasets: [{
+                        label: ['<%=@transaction_type%>'],
+                        data: [...sumsArray],
+                        borderColor: 'rgba(54, 162, 235, 1)', // Колір лінії доходу
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)', // Фоновий колір з прозорістю
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

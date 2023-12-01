@@ -1,0 +1,32 @@
+<h1 class="new_category">Генератор звітів</h1>
+
+<%= form_tag(transactions_report_path, method: :get, class: "category-form") do %>
+    <div class="content-container">
+        <div class="title_category">
+            <p class="title">Дата початку</p>
+            <%= date_field_tag :start_date, nil, class: "date-input" %>
+        </div>
+
+        <div class="title_category">
+            <p class="title">Дата кінця</p>
+            <%= date_field_tag :end_date, nil, class: "date-input" %>
+        </div>
+
+        <div class="title_category">
+            <p class="title">Тип операції</p>
+            <%= select_tag :transaction_type, options_for_select([['Витрати', 'Витрати'], ['Дохід', 'Дохід']], nil), include_blank: "Оберіть тип операції", class: "transaction-type-dropdown" %>
+        </div>
+
+        <div class="title_category">
+            <p class="title">Назва категорії</p>
+            <%= select_tag :category_title, options_from_collection_for_select(Category.all, :title, :title), include_blank: "Оберіть категорію", class: "category-dropdown" %>
+        </div>
+
+        <p class="button_clear_t">
+            <%= submit_tag "Згенерувати", class: "category-submit" %>
+            <%= button_tag "Очистити", type: :reset, class: "category-submit" %>
+            <%= submit_tag "Графік", formaction: transactions_graph_report_path, class: "category-submit-graph" %>
+            <%= submit_tag "По датам", class: "category-submit-date" %>
+        </p>
+    </div>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  transaction_type: MyString
+  sum: 1.5
+  date: 2023-11-28
+  description: MyText
+
+two:
+  title: MyString
+  transaction_type: MyString
+  sum: 1.5
+  date: 2023-11-28
+  description: MyText

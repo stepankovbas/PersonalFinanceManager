@@ -1,0 +1,82 @@
+.new_category {
+    margin-left: 10%;
+}
+
+.category-form {
+  /* Стилі для форми */
+  /* Наприклад, задати ширину або вирівнювання */
+  width: 80%;
+  margin-left: 10%;
+}
+
+.title_category, .description_category {
+    display: flex; /* Розміщення у ряд */
+    align-items: center; /* Вирівнювання елементів по вертикалі */
+}
+
+.title, .description {
+    width: 180px;
+}
+
+.category-title, .category-description {
+  /* Стилі для текстових полів */
+  /* Наприклад, задати розмір шрифту або колір тексту */
+  font-size: 16px;
+  color: #333;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.category-description {
+  /* Додаткові стилі для текстової області */
+  height: 100px; /* Наприклад, задати висоту */
+}
+
+.category-submit {
+  /* Стилі для кнопки submit */
+  /* Наприклад, задати фоновий колір чи кольори тексту */
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.category-submit-graph {
+  /* Стилі для кнопки submit */
+  /* Наприклад, задати фоновий колір чи кольори тексту */
+  background-color: #0fa717;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.category-submit-date {
+  /* Стилі для кнопки submit */
+  /* Наприклад, задати фоновий колір чи кольори тексту */
+  background-color: #db2020;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button_clear {
+  margin-left: 155px;
+}
+
+.button_clear_t {
+  margin-left: 180px;
+}
+
+.category-submit:hover {
+  /* Стилі для кнопки submit при наведенні */
+  background-color: #2980b9;
+}

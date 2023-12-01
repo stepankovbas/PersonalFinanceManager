@@ -1,0 +1,22 @@
+
+<h1 class="new_category">Редагування інформації про категорію доходів/витрат</h1>
+
+<%= form_for :category, url: category_path(@category), method: :patch, html: { class: "category-form" } do |f| %>
+
+    <div class="content-container"> 
+        <div class=title_category>
+            <p class="title">Назва категорії</p>
+            <%= f.text_field :title, class: "category-title" %>
+        </div>
+
+        <div class=description_category>
+            <p class="description">Короткий опис</p>
+            <%= f.text_area :description, class: "category-description" %>       
+        </div>   
+
+        <p class="button_clear">
+            <%= f.submit "Зберегти", class: "category-submit" %>
+            <%= button_tag "Очистити", type: :reset, class: "category-submit" %>
+        </p>
+    </div>
+<% end %>

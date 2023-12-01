@@ -1,0 +1,112 @@
+/* Стилі для хедера */
+header {
+  background-color: rgb(0, 0, 0); /* Колір фону */
+  color: rgb(99, 99, 99); /* Колір тексту */
+}
+
+/* Стилі для списку в хедері */
+header ul {
+  list-style-type: none; /* Видалення маркера списку */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Розміщення у ряд */
+  align-items: center; /* Вирівнювання елементів по вертикалі */
+}
+
+/* Стилі для пунктів списку */
+header li {
+  margin-right: 100px; /* Відступ між пунктами */
+}
+
+/* Стилі для посилань */
+header a {
+  color: rgb(99, 99, 99);; /* Колір тексту посилань */
+  text-decoration: none; /* Видалення підкреслення */
+  font-weight: bold; /* Жирний шрифт */
+}
+
+h1, h2 {
+    margin: 20px; /* Відступи зовнішні */    
+}
+.content-container {
+  margin: 20px; /* Відступи зовнішні */
+  padding: 20px; /* Відступи внутрішні */
+  border: 1px solid #ccc; /* Рамка */
+  border-radius: 5px; /* Закруглені кути */
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Тінь */
+  background-color: #f0f0f0; /* Сірий колір фону */
+}
+
+nav input[type="search"] {
+  width: 500px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Закруглені кути */
+  outline: none; /* Видалення контуру */
+}
+
+nav input[type="search"]::placeholder {
+  color: rgb(117, 114, 114); /* Колір тексту заповнювача */
+}
+
+nav input[type="search"]:focus {
+  border-color: #007bff; /* Колір межі при фокусі */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Тінь при фокусі */
+}
+
+/* Стилі для таблиці */
+table {
+  border-collapse: collapse; /* Об'єднання границь */
+  width: 100%; /* Ширина таблиці */
+  border: 1px solid #ddd; /* Границі */
+  
+}
+
+/* Стилі для заголовка таблиці */
+th {
+  background-color: #f0f0f0; /* Колір фону заголовка */
+  border: 1px solid #ddd; /* Границі */
+  padding: 8px; /* Відступи */
+  text-align: left; /* Вирівнювання тексту */
+}
+
+/* Стилі для рядків таблиці */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Колір фону для парних рядків */
+}
+
+/* Стилі для кнопок Edit і Delete */
+td a, td input[type="submit"] {
+  display: inline-block; /* Вирівнювання в ряд */
+  padding: 5px 10px; /* Відступи */
+  text-decoration: none; /* Видалення підкреслення */
+  border: 1px solid #ccc; /* Границі */
+  border-radius: 4px; /* Закруглені кути */
+  margin-right: 5px; /* Відступ між кнопками */
+}
+
+.button_ed_del {
+    display: flex; /* Розміщення у ряд */
+    align-items: center; /* Вирівнювання елементів по вертикалі */
+}
+
+/* Стилі при наведенні на кнопки */
+td a:hover, td input[type="submit"]:hover {
+  background-color: #ddd; /* Колір фону при наведенні */
+}
+
+/* Стилі для кнопки "Додати нову категорію" */
+a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Додаємо тінь */
+}
+
+a.button:hover {
+  background-color: #2980b9;
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>  
+
+  <body>
+        <main>
+            <h1>Транзакції</h1>
+            <div class="content-container">  
+                <nav>
+                    <%= form_tag transactions_path, method: :get do %>
+                        <%= select_tag :title, options_for_select(Category.all.map { |c| [c.title, c.title] }, params[:title]), include_blank: 'Фільтр по категоріям' %>
+                        <%= submit_tag 'Фільтр', class: 'button' %>
+                    <% end %>
+                </nav>
+
+                <table>
+                    <thead>
+                        <tr>
+                        <th>#</th>
+                        <th>Категорія</th>
+                        <th>Тип операції</th>
+                        <th>Сума</th> 
+                        <th>Дата</th>
+                        <th>Опис</th>
+                        <th>Управління</th>                  
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @transaction.each_with_index do |t, index| %>
+                            <tr>
+                                <td><%= index+1 %></td>
+                                <td><%= t.title %></td>
+                                <td><%= t.transaction_type %></td>
+                                <td><%= t.sum %></td>
+                                <td><%= t.date %></td>
+                                <td><%= t.description %></td>
+                                <td class="button_ed_del"> 
+                                    <%= link_to edit_transaction_path(t) do %>
+                                        <%= image_tag 'pencil-square.svg', alt: 'Edit' %>
+                                    <% end %>
+
+                                    <%= button_to transaction_path(t), method: :delete, form: { data: { confirm: 'Ви впевнені, що хочете видалити дану категорію?' } } do %>
+                                        <%= image_tag 'x-circle-fill.svg', alt: 'Delete' %>
+                                    <% end %>                                  
+                                </td>
+                            </tr>
+                        <% end %>       
+                    </tbody>
+                </table>
+            </div>      
+
+            <%= link_to "Додати нову транзакцію", new_transaction_path, class: "button" %>  
+
+        </main>
+  </body>
+
+</html>

@@ -1,7 +1,7 @@
 
 <h1 class="new_category">Редагування інформації про категорію доходів/витрат</h1>
 
-<%= form_for :category, url: category_path(@category), method: :patch, html: { class: "category-form" } do |f| %>
+<%= form_for :category, url: categories_path, method: :patch, html: { class: "category-form" } do |f| %>
 
     <div class="content-container"> 
         <div class=title_category>
@@ -16,7 +16,19 @@
 
         <p class="button_clear">
             <%= f.submit "Зберегти", class: "category-submit" %>
-            <%= button_tag "Очистити", type: :reset, class: "category-submit" %>
+            <%= button_tag "Очистити", type: :button, class: "category-submit", onclick: "clearForm()" %>
         </p>
     </div>
 <% end %>
+
+<script>
+    function clearForm() {
+        document.querySelectorAll('.category-form input[type="text"]').forEach(function(input) {
+            input.value = '';
+        });
+
+        document.querySelectorAll('.category-form textarea').forEach(function(textarea) {
+            textarea.value = '';
+        });
+    }
+</script>

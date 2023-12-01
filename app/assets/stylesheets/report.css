@@ -5,7 +5,8 @@
 }
 
 .main-container {
-    display: flex; /* Розміщення у ряд */    
+    display: flex; /* Розміщення у ряд */  
+    align-items: center; /* Вирівнювання елементів по вертикалі */      
 }
 
 .all_sum {

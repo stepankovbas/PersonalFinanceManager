@@ -1,7 +1,7 @@
 
 <h1 class="new_category">Редагування інформації про транзакції</h1>
 
-<%= form_for :transaction, url: transaction_path(@transaction), method: :patch, html: { class: "category-form" } do |f| %>
+<%= form_for :transaction, url: transactions_path, method: :patch, html: { class: "category-form" } do |f| %>
 
     <div class="content-container"> 
         <div class="title_category">
@@ -31,8 +31,32 @@
         
         <p class="button_clear_t">
             <%= f.submit "Зберегти", class: "category-submit" %>
-            <%= button_tag "Очистити", type: :reset, class: "category-submit" %>
+            <%= button_tag "Очистити", type: :button, class: "category-submit", onclick: "clearFormFields()" %>
         </p>
     </div>
     
 <% end %>
+
+<script>
+    function clearFormFields() {
+        document.querySelectorAll('.category-dropdown').forEach(function(select) {
+            select.selectedIndex = 0;
+        });
+
+        document.querySelectorAll('.transaction-type-dropdown').forEach(function(select) {
+            select.selectedIndex = 0;
+        });
+
+        document.querySelectorAll('.amount-input').forEach(function(input) {
+            input.value = '';
+        });
+
+        document.querySelectorAll('.date-input').forEach(function(input) {
+            input.value = '';
+        });
+
+        document.querySelectorAll('.description-input').forEach(function(textarea) {
+            textarea.value = '';
+        });
+    }
+</script>

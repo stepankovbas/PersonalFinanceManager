@@ -1,69 +1,61 @@
-<!doctype html>
-<html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+<main>
+  <h1>Категорії витрат / доходів</h1>
 
-  <head>
-    <meta charset="utf-8" />
-    <title></title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  </head>  
+  <div class="content-container">  
+    <nav>
+      <input type="search" id="categorySearch" name="q" placeholder="Введіть перші літери назви категорії" />
+    </nav>
 
-  <body>
-    <main>
-      <h1>Категорії витрат / доходів</h1>
-      <div class="content-container">  
-        <nav>
-          <input type="search" id="categorySearch" name="q" placeholder="Введіть перші літери назви категорії" />
-        </nav>
-        <table id="categoryTable">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Назва</th>
-              <th>Опис</th>
-              <th>Управління</th>                
-            </tr>
-          </thead>
-          <tbody>
-            <% @category.each_with_index do |c, index| %>
-              <tr>
-                <td><%= index+1 %></td>
-                <td><%= c.title %></td>
-                <td><%= c.description %></td>
-                <td class="button_ed_del"> 
-                  <%= link_to edit_category_path(c) do %>
-                    <%= image_tag 'pencil-square.svg', alt: 'Edit' %>
-                  <% end %>
+    <table id="categoryTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Назва</th>
+          <th>Опис</th>
+          <th>Управління</th>                
+        </tr>
+      </thead>
+      
+      <tbody>
+        <% @category.each_with_index do |c, index| %>
+          <tr>
+            <td><%= index+1 %></td>
+            <td><%= c.title %></td>
+            <td><%= c.description %></td>
+            <td class="button_ed_del"> 
+              <%= link_to edit_category_path(c) do %>
+                <%= image_tag 'pencil-square.svg', alt: 'Edit' %>
+              <% end %>
 
-                  <%= button_to category_path(c), method: :delete, form: { data: { confirm: 'Ви впевнені, що хочете видалити дану категорію?' } } do %>
-                    <%= image_tag 'x-circle-fill.svg', alt: 'Delete' %>
-                  <% end %>                                  
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>  
-      </div>
-       <%# <button>Додати нову категорію</button> %>
-      <%= link_to "Додати нову категорію", new_category_path, class: "button" %>  
+              <%= button_to category_path(c), method: :delete, form: { data: { confirm: 'Ви впевнені, що хочете видалити дану категорію?' } } do %>
+                <%= image_tag 'x-circle-fill.svg', alt: 'Delete' %>
+              <% end %>                                  
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table> 
+  </div>
 
-    </main>
+    <%# <button>Додати нову категорію</button> %>
+    <%= link_to "Додати нову категорію", new_category_path, class: "button" %> 
+    
+</main>
 
-    <script>
-      $(document).ready(function() {
-        $('#categorySearch').on('keyup', function() {
-          var searchText = $(this).val().toLowerCase();
-          $('#categoryTable tbody tr').each(function() {
-            var textToSearch = $(this).text().toLowerCase();
-            if (textToSearch.indexOf(searchText) === -1) {
-              $(this).hide();
-            } else {
-              $(this).show();
-            }
-          });
-        });
+<script>
+  $(document).ready(function() {
+    $('#categorySearch').on('keyup', function() {
+      var searchText = $(this).val().toLowerCase();
+      $('#categoryTable tbody tr').each(function() {
+        var textToSearch = $(this).text().toLowerCase();
+        if (textToSearch.indexOf(searchText) === -1) {
+          $(this).hide();
+        } else {
+          $(this).show();
+        }
       });
-    </script>
-
-  </body>
-
-</html>
+    });
+  });
+</script>

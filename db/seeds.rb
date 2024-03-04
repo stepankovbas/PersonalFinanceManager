@@ -7,3 +7,25 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+
+require 'faker'
+
+# Створюємо 1000 категорій
+1000.times do
+  Category.create(
+    title: Faker::Commerce.department,
+    description: Faker::Lorem.sentence
+  )
+end
+
+# Створюємо 1000 транзакцій
+1000.times do
+  Transaction.create(
+    title: Faker::Commerce.product_name,
+    transaction_type: ['Витрати', 'Дохід'].sample,
+    sum: Faker::Number.decimal(l_digits: 2),
+    date: Faker::Date.backward(days: 365),
+    description: Faker::Lorem.sentence
+  )
+end
